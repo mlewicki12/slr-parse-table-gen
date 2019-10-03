@@ -35,9 +35,13 @@ namespace ML.Main {
       return false;
     }
     
-    public State Print() {
+    public State Print(string pref) {
       foreach (var prod in Productions) {
-        Console.WriteLine($"\t{prod}");
+        Console.Write($"{pref}{prod}");
+
+        if (prod.NextState != -1) {
+          Console.WriteLine($" -> {prod.NextState}");
+        } else Console.WriteLine();
       }
 
       return this;

@@ -1,6 +1,8 @@
 
+using System;
+
 namespace ML.Main {
-  public class Token {
+  public class Token : IEquatable<Token> {
     public string Symbol;
 
     public Token(string val) {
@@ -8,11 +10,19 @@ namespace ML.Main {
     }
 
     public Token Copy() {
-      return new Token(this.Symbol);
+      return new Token(Symbol);
     }
 
     public bool Equals(Token other) {
-      return (Symbol == other.Symbol);
+      if (other != null) {
+        return (Symbol == other.Symbol);
+      }
+
+      return false;
+    }
+
+    public override string ToString() {
+      return $"{Symbol}";
     }
   }
 }

@@ -4,13 +4,16 @@ using System.Collections.Generic;
 
 namespace ML.Main {
   public class Production {
-    public Token Result;         // The left side of the grammar definition
-    public List<Token> Content;  // The right side of the grammar definition
-    public int Position;         // The position of the dot
+    public readonly Token Result;         // The left side of the grammar definition
+    public readonly List<Token> Content;  // The right side of the grammar definition
+    public readonly int Position;         // The position of the dot
+
+    public int NextState;
 
     public Production(string val) {   // Get the state from a string
       Content = new List<Token>();
       Position = 0;
+      NextState = -1;
       
       var spl = val.Split("->");
       if (spl.Length != 2) {
@@ -28,6 +31,7 @@ namespace ML.Main {
     public Production(Production basis) {
       Result = basis.Result.Copy();
       Position = basis.Position + 1;
+      NextState = -1;
 
       Content = new List<Token>();
       foreach (var tok in basis.Content) {
