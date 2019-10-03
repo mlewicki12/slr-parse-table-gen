@@ -11,9 +11,9 @@ namespace ML.Main {
       Grammar = grammar;
       States = new List<State>();
       
-      this.Start();
+      Start();
       for (int i = 0; i < States.Count; ++i) {
-        this.Complete(i).Read(i);
+        Complete(i).Read(i);
       }
     }
 

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace ML.Main {
-  public class Production {
+  public class Production : IEquatable<Production> {
     public readonly Token Result;         // The left side of the grammar definition
     public readonly List<Token> Content;  // The right side of the grammar definition
     public readonly int Position;         // The position of the dot
