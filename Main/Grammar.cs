@@ -32,6 +32,8 @@ namespace ML.Main {
                 Productions.Add(add);
             }
 
+            Terminals.Add("$");
+            
             var startProd = $"{Productions[0].Result.Symbol}' -> {Productions[0].Result.Symbol} $";
             Productions.Insert(0, new Production(startProd));
 
@@ -70,6 +72,16 @@ namespace ML.Main {
             }
 
             return ret;
+        }
+
+        public int GetProductionNumber(Production prod) {
+            for (int i = 0; i < Productions.Count; ++i) {
+                if (Productions[i].Equals(prod)) {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         public Grammar Print() {

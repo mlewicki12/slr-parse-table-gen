@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace ML.Main {
   public class State {
     public List<Production> Productions;
+    public Dictionary<string, Transition> Transitions;
 
     public State() {
       Productions = new List<Production>();
@@ -12,6 +13,11 @@ namespace ML.Main {
 
     public State Add(Production prod) {
       Productions.Add(prod);
+      return this;
+    }
+
+    public State AddTransition(string value, Transition tran) {
+      Transitions.Add(value, tran);
       return this;
     }
 
